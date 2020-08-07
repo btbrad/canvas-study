@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #canvas {
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  
+  <canvas id="canvas"></canvas>
+
+  <script>
+    
+    let canvas = document.querySelector('#canvas')
+    let context = canvas.getContext('2d')
+
+    let cx = canvas.width = 400
+    let cy = canvas.height = 400
+    
+    context.beginPath()
+    context.fillStyle = '#f40'
+    context.fillRect(50, 50, 100, 100)
+    context.strokeStyle = '#0ff'
+    context.strokeRect(100, 100, 80, 80)
+    context.closePath()
+
+  </script>
+
+</body>
+</html>
