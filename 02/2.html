@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+      cursor: none;
+    }
+  </style>
+</head>
+<body>
+  
+  <canvas id="canvas"></canvas>
+
+  <script>
+    
+    let canvas = document.querySelector('#canvas')
+    let context = canvas.getContext('2d')
+    const initRoundPopulation = 80
+    let round = []
+
+    const WIDTH = document.documentElement.clientWidth
+    const HEIGHT = document.documentElement.clientHeight
+
+    canvas.width = WIDTH
+    canvas.height = HEIGHT
+
+    class Round_item {
+
+      constructor(index, x, y) {
+        this.index = index
+        this.x = x
+        this.y = y
+        this.r = Math.random() * 2 + 1
+        this.color = `rgba(255, 255, 255, ${ (Math.floor(Math.random() * 10) + 1) / 10 / 2 })`
+      }
+
+      draw() {
+        context.fillStyle = this.color;
+        context.shadowBlur = this.r * 2;
+        context.beginPath();
+        context.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+        context.closePath();
+        context.fill();
+      }
+
+    }
+
+    function init() {
+      for(var i = 0; i < initRoundPopulation; i++ ){
+          round[i] = new Round_item(i,Math.random() * WIDTH,Math.random() * HEIGHT);
+          round[i].draw();
+      }
+    }
+
+    init()
+  </script>
+
+</body>
+</html>
